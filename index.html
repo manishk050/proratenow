@@ -8,8 +8,8 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="description" content="Free pro-rated rent and salary calculator. Instantly calculate partial-month rent or pay using the exact number of days in any month, including leap years.">
-  <meta name="application-name" content="ProCalc">
-  <meta name="apple-mobile-web-app-title" content="ProCalc">
+  <meta name="application-name" content="ProrateNow">
+  <meta name="apple-mobile-web-app-title" content="ProrateNow">
 
   <!-- IMPORTANT: Replace https://YOUR-DOMAIN.com once before deployment. -->
   <link rel="canonical" href="https://YOUR-DOMAIN.com/">
@@ -17,15 +17,15 @@
   <link rel="manifest" href="/site.webmanifest">
 
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ProCalc">
-  <meta property="og:title" content="Free Pro-Rated Rent & Salary Calculator | ProCalc">
+  <meta property="og:site_name" content="ProrateNow">
+  <meta property="og:title" content="Free Pro-Rated Rent & Salary Calculator | ProrateNow">
   <meta property="og:description" content="Calculate exact partial-month rent or salary instantly with calendar-accurate daily rates.">
   <meta property="og:url" content="https://YOUR-DOMAIN.com/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Free Pro-Rated Rent & Salary Calculator | ProCalc">
+  <meta name="twitter:title" content="Free Pro-Rated Rent & Salary Calculator | ProrateNow">
   <meta name="twitter:description" content="Calculate exact partial-month rent or salary instantly with calendar-accurate daily rates.">
 
-  <title>Free Pro-Rated Rent & Salary Calculator | ProCalc</title>
+  <title>Free Pro-Rated Rent & Salary Calculator | ProrateNow</title>
 
   <script type="application/ld+json">
   {
@@ -35,13 +35,13 @@
         "@type": "WebSite",
         "@id": "https://YOUR-DOMAIN.com/#website",
         "url": "https://YOUR-DOMAIN.com/",
-        "name": "ProCalc",
+        "name": "ProrateNow",
         "description": "Free calendar-accurate pro-rated rent and salary calculator."
       },
       {
         "@type": ["WebApplication", "SoftwareApplication"],
         "@id": "https://YOUR-DOMAIN.com/#app",
-        "name": "ProCalc: Pro-Rated Rent & Salary Calculator",
+        "name": "ProrateNow: Pro-Rated Rent & Salary Calculator",
         "url": "https://YOUR-DOMAIN.com/",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Any",
@@ -239,7 +239,13 @@
   <a class="skip-link" href="#calculator">Skip to calculator</a>
   <header class="site-header">
     <div class="shell nav">
-      <a class="brand" href="#top" aria-label="ProCalc home"><span class="brand-mark" aria-hidden="true">P</span><span>ProCalc</span></a>
+      <a class="brand" href="#top" aria-label="ProrateNow home"><img
+      src="/assets/proratenow-logo.png"
+      alt="ProrateNow"
+      class="brand-logo"
+      width="210"
+      height="70">
+      </a>
       <div class="nav-right">
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#calculator">Calculator</a>
@@ -321,12 +327,12 @@
           <li>Choose the month being prorated.</li>
           <li>Count the actual calendar days in that month.</li>
           <li>Divide monthly rent by the month's day count to get the daily rate.</li>
-          <li>Count the lease days that overlap the month. ProCalc includes both the start and end date.</li>
+          <li>Count the lease days that overlap the month. ProrateNow includes both the start and end date.</li>
           <li>Multiply the daily rate by the active rental days.</li>
         </ol>
         <div class="example"><strong>Example: $3,000 rent in a 30-day month</strong>If the tenant is responsible for 12 days, the daily rate is $100.00 and the pro-rated rent is $1,200.00.</div>
         <h3>30-day method vs. actual-days method</h3>
-        <p>Some leases or local practices use a fixed 30-day divisor instead of the exact number of days in the month. ProCalc uses the actual calendar-day method because it automatically reflects February, leap years, 30-day months, and 31-day months. Your lease or local rules may require a different method, so use the method stated in the agreement when one is specified.</p>
+        <p>Some leases or local practices use a fixed 30-day divisor instead of the exact number of days in the month. ProrateNow uses the actual calendar-day method because it automatically reflects February, leap years, 30-day months, and 31-day months. Your lease or local rules may require a different method, so use the method stated in the agreement when one is specified.</p>
       </section>
 
       <section class="content-section" id="salary-guide" aria-labelledby="salaryGuideHeading">
@@ -340,10 +346,10 @@
       </section>
 
       <section class="content-section" aria-labelledby="methodHeading">
-        <h2 id="methodHeading">How ProCalc Handles Dates</h2>
+        <h2 id="methodHeading">How ProrateNow Handles Dates</h2>
         <p>The calculator first finds the exact first and last day of the target month. It then intersects that month with your lease or employment date range. Dates outside the target month are ignored, which means a range can safely span multiple months without overcounting.</p>
         <table class="comparison">
-          <thead><tr><th>Situation</th><th>What ProCalc does</th></tr></thead>
+          <thead><tr><th>Situation</th><th>What ProrateNow does</th></tr></thead>
           <tbody>
             <tr><td>February in a leap year</td><td>Uses 29 calendar days.</td></tr>
             <tr><td>Date range starts before the month</td><td>Counts from the first day of the target month.</td></tr>
@@ -359,19 +365,19 @@
         <h2 id="faqHeading">Frequently Asked Questions</h2>
         <details><summary>What does pro-rated rent mean?</summary><p>It means charging rent only for the part of a rental period that applies to the tenant, rather than charging the full monthly amount.</p></details>
         <details><summary>How do I calculate rent for part of a month?</summary><p>Using the actual-days method, divide monthly rent by the number of calendar days in the month and multiply that daily rate by the number of rental days you are responsible for.</p></details>
-        <details><summary>Does ProCalc count the move-in day?</summary><p>Yes. The calculator treats the start and end dates as inclusive when they overlap the selected target month.</p></details>
-        <details><summary>How does ProCalc handle February and leap years?</summary><p>It derives the month length from the calendar. February therefore has 28 days in a normal year and 29 days in a leap year, such as February 2028.</p></details>
-        <details><summary>What if my lease starts in one month and ends in another?</summary><p>Select the month you want to calculate. ProCalc counts only the days from your date range that overlap that target month.</p></details>
-        <details><summary>Should pro-rated salary use calendar days or working days?</summary><p>That depends on the employer's payroll policy and applicable rules. ProCalc uses calendar days. If your organization uses working days, hourly rates, or another divisor, use that policy instead.</p></details>
-        <details><summary>Is this calculator legal or payroll advice?</summary><p>No. ProCalc provides a mathematical estimate. Lease terms, payroll practices, taxes, employment rules, and local law can change the amount actually due.</p></details>
-        <details><summary>Does ProCalc send my amounts or dates to a server?</summary><p>The calculator itself runs in your browser. Your inputs are saved in localStorage so they can survive a refresh. The calculator does not require a backend to perform the calculation.</p></details>
+        <details><summary>Does ProrateNow count the move-in day?</summary><p>Yes. The calculator treats the start and end dates as inclusive when they overlap the selected target month.</p></details>
+        <details><summary>How does ProrateNow handle February and leap years?</summary><p>It derives the month length from the calendar. February therefore has 28 days in a normal year and 29 days in a leap year, such as February 2028.</p></details>
+        <details><summary>What if my lease starts in one month and ends in another?</summary><p>Select the month you want to calculate. ProrateNow counts only the days from your date range that overlap that target month.</p></details>
+        <details><summary>Should pro-rated salary use calendar days or working days?</summary><p>That depends on the employer's payroll policy and applicable rules. ProrateNow uses calendar days. If your organization uses working days, hourly rates, or another divisor, use that policy instead.</p></details>
+        <details><summary>Is this calculator legal or payroll advice?</summary><p>No. ProrateNow provides a mathematical estimate. Lease terms, payroll practices, taxes, employment rules, and local law can change the amount actually due.</p></details>
+        <details><summary>Does ProrateNow send my amounts or dates to a server?</summary><p>The calculator itself runs in your browser. Your inputs are saved in localStorage so they can survive a refresh. The calculator does not require a backend to perform the calculation.</p></details>
       </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="shell footer-inner">
-      <span>© <span id="year"></span> ProCalc. Free calculation tool.</span>
+      <span>© <span id="year"></span> ProrateNow. Free calculation tool.</span>
       <nav class="footer-links" aria-label="Footer navigation"><a href="/about.html">About &amp; methodology</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
     </div>
   </footer>
@@ -381,8 +387,8 @@
   <script>
   (() => {
     "use strict";
-    const STORAGE_KEY = "procalc-state-v2";
-    const THEME_KEY = "procalc-theme-v1";
+    const STORAGE_KEY = "ProrateNow-state-v2";
+    const THEME_KEY = "ProrateNow-theme-v1";
     const state = { mode: "rent", rent: {amount:"",month:"",start:"",end:""}, salary: {amount:"",month:"",start:"",end:""} };
     const $ = id => document.getElementById(id);
     const el = {
@@ -422,7 +428,7 @@
       let status=`Using the actual calendar-day method for ${mLabel}.`; let tone="success";
       if(active===0){status=`The selected ${l.active} dates do not overlap ${mLabel}, so the total is $0.00.`; tone="warning";} else if(active===month.days){status=`The active period covers all ${month.days} days of ${mLabel}, so the full ${l.amount} applies.`;}
       el.resultTotal.textContent=money.format(total); el.resultSummary.textContent=`${money.format(amount)} monthly ÷ ${month.days} days × ${active} active day${active===1?"":"s"}.`; el.dailyRate.textContent=money.format(daily); el.daysInMonth.textContent=String(month.days); el.activeDays.textContent=String(active); el.activeDaysLabel.textContent=l.days; el.statusBox.textContent=status; el.statusBox.dataset.tone=tone; el.copyBreakdown.disabled=false;
-      el.copyBreakdown.dataset.breakdown=`Pro-Rated Total: ${money.format(total)}. Based on a monthly ${l.noun} of ${money.format(amount)} across ${month.days} days in ${mLabel}, active for ${active} day${active===1?"":"s"}. Daily rate: ${money.format(daily)}. Calculated via ProCalc.`;
+      el.copyBreakdown.dataset.breakdown=`Pro-Rated Total: ${money.format(total)}. Based on a monthly ${l.noun} of ${money.format(amount)} across ${month.days} days in ${mLabel}, active for ${active} day${active===1?"":"s"}. Daily rate: ${money.format(daily)}. Calculated via ProrateNow.`;
       save(); return {total};
     }
     function switchMode(mode,focus=false){ if(!["rent","salary"].includes(mode))return; state.mode=mode; const r=mode==="rent"; el.rentTab.setAttribute("aria-selected",String(r)); el.salaryTab.setAttribute("aria-selected",String(!r)); el.rentTab.tabIndex=r?0:-1; el.salaryTab.tabIndex=r?-1:0; el.rentPanel.hidden=!r; el.salaryPanel.hidden=r; el.activeDaysLabel.textContent=r?"Active Rent Days":"Active Calendar Days"; history.replaceState(null,"",r?"#rent":"#salary"); if(focus)(r?el.rentTab:el.salaryTab).focus(); calculate(mode,{quiet:true}); save(); }
