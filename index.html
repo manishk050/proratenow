@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="description" content="Free pro-rated rent and salary calculator from ProrateNow. Instantly calculate partial-month rent or pay using the exact number of days in any month, including leap years.">
+  <meta name="application-name" content="ProrateNow">
+  <meta name="apple-mobile-web-app-title" content="ProrateNow">
+
+  <!-- IMPORTANT: Replace https://proratenow.online once before deployment. -->
+  <link rel="canonical" href="https://proratenow.online/">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/favicon-192.png">
+  <link rel="preload" href="/proratenow-logo.png" as="image" type="image/png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ProrateNow">
+  <meta property="og:title" content="Free Pro-Rated Rent & Salary Calculator | ProrateNow">
+  <meta property="og:description" content="Calculate exact partial-month rent or salary instantly with calendar-accurate daily rates.">
+  <meta property="og:url" content="https://proratenow.online/">
+  <meta property="og:image" content="https://proratenow.online/proratenow-logo.png">
+  <meta property="og:image:alt" content="ProrateNow logo">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Free Pro-Rated Rent & Salary Calculator | ProrateNow">
+  <meta name="twitter:description" content="Calculate exact partial-month rent or salary instantly with calendar-accurate daily rates.">
+
+  <title>Free Pro-Rated Rent & Salary Calculator | ProrateNow</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://proratenow.online/#website",
+        "url": "https://proratenow.online/",
+        "name": "ProrateNow",
+        "logo": "https://proratenow.online/proratenow-logo.png",
+        "description": "Free calendar-accurate pro-rated rent and salary calculator."
+      },
+      {
+        "@type": ["WebApplication", "SoftwareApplication"],
+        "@id": "https://proratenow.online/#app",
+        "name": "ProrateNow: Pro-Rated Rent & Salary Calculator",
+        "url": "https://proratenow.online/",
+        "image": "https://proratenow.online/proratenow-logo.png",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript and a modern web browser.",
+        "isAccessibleForFree": true,
+        "description": "A free browser-based calculator for calendar-accurate pro-rated rent and monthly salary calculations.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Pro-rated rent calculation",
+          "Pro-rated salary calculation",
+          "Exact month length detection",
+          "Leap-year support",
+          "Inclusive date range calculation",
+          "Instant calculation breakdown"
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://proratenow.online/#rent-howto",
+        "name": "How to Calculate Pro-Rated Rent Using Calendar Days",
+        "description": "Divide monthly rent by the exact number of days in the target month, then multiply by the number of rental days that fall in that month.",
+        "step": [
+          {"@type": "HowToStep", "name": "Count days in the month", "text": "Find the exact number of calendar days in the target month."},
+          {"@type": "HowToStep", "name": "Find the daily rate", "text": "Divide the monthly rent by the number of calendar days in the target month."},
+          {"@type": "HowToStep", "name": "Count active rental days", "text": "Count the lease days that overlap the target month, including both the first and last active day."},
+          {"@type": "HowToStep", "name": "Calculate the prorated total", "text": "Multiply the daily rate by the active rental days."}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --surface-accent: #eef2ff;
+      --text: #0f172a;
+      --muted: #526079;
+      --border: #dbe3ef;
+      --border-strong: #c7d1df;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --success: #047857;
+      --success-bg: #ecfdf5;
+      --warning: #a16207;
+      --warning-bg: #fffbeb;
+      --danger: #b91c1c;
+      --danger-bg: #fef2f2;
+      --shadow: 0 24px 70px rgba(15, 23, 42, .09);
+      --focus: 0 0 0 4px rgba(79, 70, 229, .18);
+      --max: 1120px;
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #070b14;
+      --surface: #0f172a;
+      --surface-soft: #111827;
+      --surface-accent: #1e1b4b;
+      --text: #f8fafc;
+      --muted: #b2bdd0;
+      --border: #25324a;
+      --border-strong: #3a4a64;
+      --primary: #818cf8;
+      --primary-hover: #a5b4fc;
+      --success: #6ee7b7;
+      --success-bg: #062e28;
+      --warning: #fbbf24;
+      --warning-bg: #3a2605;
+      --danger: #fca5a5;
+      --danger-bg: #3b1117;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .32);
+      --focus: 0 0 0 4px rgba(129, 140, 248, .22);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(79, 70, 229, .10), transparent 30rem),
+        radial-gradient(circle at 90% 16%, rgba(14, 165, 233, .07), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--primary); text-underline-offset: 3px; }
+    a:hover { color: var(--primary-hover); }
+    button, input { font: inherit; }
+    button:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: none; box-shadow: var(--focus); border-radius: 10px; }
+    .shell { width: min(calc(100% - 32px), var(--max)); margin-inline: auto; }
+    .skip-link { position: fixed; top: 8px; left: 8px; z-index: 50; transform: translateY(-160%); padding: 10px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; color: var(--text); }
+    .skip-link:focus { transform: translateY(0); }
+    .site-header { padding: 20px 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; text-decoration: none; border-radius: 12px; }
+    .brand-logo-wrap { display: inline-flex; align-items: center; padding: 5px 9px; border-radius: 12px; background: rgba(255,255,255,.94); }
+    .brand-logo { display: block; width: 190px; height: auto; max-width: 48vw; }
+    [data-theme="dark"] .brand-logo-wrap { background: #fff; }
+    @media (max-width: 520px) { .brand-logo { width: 155px; max-width: 52vw; } }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-links { display: none; align-items: center; gap: 18px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 700; }
+    .nav-links a:hover { color: var(--text); }
+    .theme-toggle { min-width: 44px; min-height: 44px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--text); cursor: pointer; }
+    .hero { padding: 58px 0 30px; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; padding: 7px 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: .8rem; font-weight: 800; }
+    .hero h1 { max-width: 860px; margin: 18px auto 14px; font-size: clamp(2.35rem, 7vw, 4.9rem); line-height: 1.01; letter-spacing: -.058em; }
+    .hero p { max-width: 720px; margin: 0 auto; color: var(--muted); font-size: clamp(1rem, 2.2vw, 1.16rem); }
+    .trust-row { margin: 20px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 14px; color: var(--muted); font-size: .84rem; font-weight: 700; }
+    .calculator-wrap { padding: 18px 0 60px; }
+    .calculator-card { overflow: hidden; background: var(--surface); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow); }
+    .card-body { padding: clamp(18px,4vw,36px); }
+    .tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; margin-bottom: 28px; border: 1px solid var(--border); border-radius: 15px; background: var(--surface-soft); }
+    .tab-button { min-height: 48px; border: 0; border-radius: 11px; background: transparent; color: var(--muted); font-weight: 850; cursor: pointer; }
+    .tab-button[aria-selected="true"] { background: var(--surface); color: var(--text); box-shadow: 0 4px 18px rgba(15,23,42,.08); }
+    .mode-copy { margin-bottom: 24px; }
+    .mode-copy h2 { margin: 0 0 7px; font-size: clamp(1.35rem,3vw,1.8rem); letter-spacing: -.025em; }
+    .mode-copy p { margin: 0; color: var(--muted); }
+    .input-grid { display: grid; gap: 18px; }
+    .field { display: grid; gap: 7px; }
+    .field label { font-size: .88rem; font-weight: 800; }
+    .field-note { margin: 0; color: var(--muted); font-size: .78rem; }
+    input { width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 12px; background: var(--surface); color: var(--text); }
+    input:hover, input:focus { border-color: var(--primary); }
+    input:focus { box-shadow: var(--focus); }
+    input[aria-invalid="true"] { border-color: var(--danger); }
+    .error-text { min-height: 1.1em; color: var(--danger); font-size: .8rem; font-weight: 750; }
+    .results { margin-top: 28px; border: 1px solid var(--border); border-radius: 18px; background: var(--surface-soft); overflow: hidden; }
+    .result-main { padding: 25px; border-bottom: 1px solid var(--border); }
+    .result-kicker { margin: 0 0 8px; color: var(--muted); font-size: .78rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    .result-total { margin: 0; font-size: clamp(2.2rem,7vw,4rem); line-height: 1; letter-spacing: -.055em; font-variant-numeric: tabular-nums; }
+    .result-summary { margin: 12px 0 0; color: var(--muted); }
+    .status-box { margin-top: 18px; padding: 13px 15px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--muted); font-size: .9rem; }
+    .status-box[data-tone="success"] { background: var(--success-bg); border-color: var(--success); color: var(--success); }
+    .status-box[data-tone="warning"] { background: var(--warning-bg); border-color: var(--warning); color: var(--warning); }
+    .status-box[data-tone="danger"] { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+    .primary-button { width: 100%; min-height: 50px; margin-top: 18px; border: 0; border-radius: 12px; background: var(--primary); color: #fff; font-weight: 850; cursor: pointer; }
+    .primary-button:hover { background: var(--primary-hover); }
+    .primary-button:disabled { opacity: .5; cursor: not-allowed; }
+    .metrics { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); }
+    .metric { min-width: 0; padding: 18px; background: var(--surface); }
+    .metric-label { display: block; margin-bottom: 4px; color: var(--muted); font-size: .78rem; font-weight: 750; }
+    .metric-value { display: block; overflow-wrap: anywhere; font-weight: 850; font-variant-numeric: tabular-nums; }
+    [hidden] { display: none !important; }
+    .content { display: grid; gap: 24px; padding-bottom: 72px; }
+    .content-section { padding: clamp(22px,4vw,36px); border: 1px solid var(--border); border-radius: 22px; background: var(--surface); }
+    .content-section h2 { margin: 0 0 14px; font-size: clamp(1.55rem,4vw,2.25rem); line-height: 1.15; letter-spacing: -.035em; }
+    .content-section h3 { margin: 28px 0 8px; font-size: 1.15rem; }
+    .content-section p { color: var(--muted); }
+    .content-section p:last-child { margin-bottom: 0; }
+    .two-col { display: grid; gap: 22px; }
+    .info-card { padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-soft); }
+    .info-card h3 { margin: 0 0 7px; }
+    .info-card p { margin: 0; }
+    .formula { margin: 20px 0; padding: 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-accent); font-weight: 850; overflow-wrap: anywhere; }
+    .example { margin-top: 20px; padding: 18px; border-left: 4px solid var(--primary); border-radius: 10px; background: var(--surface-soft); }
+    .example strong { display: block; margin-bottom: 5px; }
+    .steps { padding-left: 22px; }
+    .steps li + li { margin-top: 9px; }
+    .comparison { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: .92rem; }
+    .comparison th, .comparison td { padding: 12px 10px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    .comparison th { color: var(--text); }
+    .comparison td { color: var(--muted); }
+    details { border-top: 1px solid var(--border); }
+    details:first-of-type { border-top: 0; }
+    summary { cursor: pointer; list-style: none; padding: 18px 0; font-weight: 800; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; float: right; color: var(--primary); font-size: 1.2rem; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: -4px 0 20px; padding-right: 26px; }
+    .updated { margin-top: 20px; color: var(--muted); font-size: .8rem; }
+    .site-footer { padding: 8px 0 42px; color: var(--muted); font-size: .85rem; }
+    .footer-inner { display: flex; flex-direction: column; gap: 14px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 14px; }
+    .footer-links a { color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+    @media (min-width: 700px) {
+      .input-grid, .two-col { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .metrics { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .footer-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+    @media (min-width: 850px) { .nav-links { display: flex; } }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#calculator">Skip to calculator</a>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#top" aria-label="ProrateNow home">
+        <span class="brand-logo-wrap">
+          <img class="brand-logo" src="/proratenow-logo.png" alt="ProrateNow" width="923" height="184" decoding="async">
+        </span>
+      </a>
+      <div class="nav-right">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#calculator">Calculator</a>
+          <a href="#rent-guide">Rent guide</a>
+          <a href="#salary-guide">Salary guide</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle dark mode"><span id="themeIcon" aria-hidden="true">☾</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero shell" aria-labelledby="pageTitle">
+      <span class="eyebrow">Free • Calendar-accurate • No sign-up</span>
+      <h1 id="pageTitle">Free Pro-Rated Rent &amp; Salary Calculator</h1>
+      <p>Calculate partial-month rent or salary instantly using the exact number of calendar days in the selected month. Leap years, cross-month date ranges, and partial periods are handled automatically.</p>
+      <div class="trust-row" aria-label="Calculator benefits"><span>✓ Runs in your browser</span><span>✓ Saves inputs locally</span><span>✓ Exact 28/29/30/31-day logic</span></div>
+    </section>
+
+    <section class="calculator-wrap shell" id="calculator" aria-label="Pro-rated rent and salary calculator">
+      <div class="calculator-card">
+        <div class="card-body">
+          <div class="tabs" role="tablist" aria-label="Calculator mode">
+            <button class="tab-button" id="rentTab" role="tab" type="button" aria-selected="true" aria-controls="rentPanel" tabindex="0" data-mode="rent">Rent Calculator</button>
+            <button class="tab-button" id="salaryTab" role="tab" type="button" aria-selected="false" aria-controls="salaryPanel" tabindex="-1" data-mode="salary">Salary Calculator</button>
+          </div>
+
+          <section id="rentPanel" role="tabpanel" aria-labelledby="rentTab">
+            <div class="mode-copy">
+              <h2>Pro-Rated Rent Calculator</h2>
+              <p>For tenants, landlords, move-ins, move-outs, and leases that begin or end partway through a month.</p>
+            </div>
+            <div class="input-grid">
+              <div class="field"><label for="rentAmount">Monthly Rent Amount ($)</label><input id="rentAmount" name="rentAmount" type="number" min="0" step="0.01" inputmode="decimal" autocomplete="off" placeholder="3000"><span class="error-text" id="rentAmountError" aria-live="polite"></span></div>
+              <div class="field"><label for="rentMonth">Target Month &amp; Year</label><input id="rentMonth" name="rentMonth" type="month"><span class="error-text" id="rentMonthError" aria-live="polite"></span></div>
+              <div class="field"><label for="leaseStart">Lease Start Date</label><input id="leaseStart" name="leaseStart" type="date"><p class="field-note">First day the tenant is responsible for rent.</p><span class="error-text" id="leaseStartError" aria-live="polite"></span></div>
+              <div class="field"><label for="leaseEnd">Lease End Date</label><input id="leaseEnd" name="leaseEnd" type="date"><p class="field-note">Last day the tenant is responsible for rent.</p><span class="error-text" id="leaseEndError" aria-live="polite"></span></div>
+            </div>
+          </section>
+
+          <section id="salaryPanel" role="tabpanel" aria-labelledby="salaryTab" hidden>
+            <div class="mode-copy">
+              <h2>Pro-Rated Salary Calculator</h2>
+              <p>For HR, payroll, onboarding, offboarding, and partial-month salary estimates using a calendar-day method.</p>
+            </div>
+            <div class="input-grid">
+              <div class="field"><label for="salaryAmount">Monthly Salary Amount ($)</label><input id="salaryAmount" name="salaryAmount" type="number" min="0" step="0.01" inputmode="decimal" autocomplete="off" placeholder="6000"><span class="error-text" id="salaryAmountError" aria-live="polite"></span></div>
+              <div class="field"><label for="salaryMonth">Target Month &amp; Year</label><input id="salaryMonth" name="salaryMonth" type="month"><span class="error-text" id="salaryMonthError" aria-live="polite"></span></div>
+              <div class="field"><label for="employmentStart">Employment Start Date</label><input id="employmentStart" name="employmentStart" type="date"><p class="field-note">First calendar day included in the pay period.</p><span class="error-text" id="employmentStartError" aria-live="polite"></span></div>
+              <div class="field"><label for="employmentEnd">Employment End Date</label><input id="employmentEnd" name="employmentEnd" type="date"><p class="field-note">Last calendar day included in the pay period.</p><span class="error-text" id="employmentEndError" aria-live="polite"></span></div>
+            </div>
+          </section>
+
+          <section class="results" aria-labelledby="resultHeading">
+            <div class="result-main">
+              <p class="result-kicker" id="resultHeading">Pro-Rated Total</p>
+              <p class="result-total" id="resultTotal">$0.00</p>
+              <p class="result-summary" id="resultSummary" aria-live="polite">Enter your monthly amount, target month, and active date range.</p>
+              <div class="status-box" id="statusBox" data-tone="neutral" role="status">Your calculation updates instantly as you type.</div>
+              <button class="primary-button" id="copyBreakdown" type="button" disabled>Copy Calculation Breakdown</button>
+            </div>
+            <div class="metrics" aria-label="Calculation breakdown">
+              <div class="metric"><span class="metric-label">Daily Rate</span><span class="metric-value" id="dailyRate">$0.00</span></div>
+              <div class="metric"><span class="metric-label">Days in Month</span><span class="metric-value" id="daysInMonth">—</span></div>
+              <div class="metric"><span class="metric-label" id="activeDaysLabel">Active Rent Days</span><span class="metric-value" id="activeDays">—</span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell content">
+      <section class="content-section" id="rent-guide" aria-labelledby="rentGuideHeading">
+        <h2 id="rentGuideHeading">How to Calculate Pro-Rated Rent</h2>
+        <p>Pro-rated rent is a partial rent amount for a tenant who occupies a property for only part of a billing month. One common method is the <strong>actual calendar-day method</strong>: divide the monthly rent by the exact number of days in that month, then multiply by the number of rental days that fall inside the month.</p>
+        <div class="formula">Pro-Rated Rent = (Monthly Rent ÷ Calendar Days in Month) × Active Rental Days</div>
+        <ol class="steps">
+          <li>Choose the month being prorated.</li>
+          <li>Count the actual calendar days in that month.</li>
+          <li>Divide monthly rent by the month's day count to get the daily rate.</li>
+          <li>Count the lease days that overlap the month. ProrateNow includes both the start and end date.</li>
+          <li>Multiply the daily rate by the active rental days.</li>
+        </ol>
+        <div class="example"><strong>Example: $3,000 rent in a 30-day month</strong>If the tenant is responsible for 12 days, the daily rate is $100.00 and the pro-rated rent is $1,200.00.</div>
+        <h3>30-day method vs. actual-days method</h3>
+        <p>Some leases or local practices use a fixed 30-day divisor instead of the exact number of days in the month. ProrateNow uses the actual calendar-day method because it automatically reflects February, leap years, 30-day months, and 31-day months. Your lease or local rules may require a different method, so use the method stated in the agreement when one is specified.</p>
+      </section>
+
+      <section class="content-section" id="salary-guide" aria-labelledby="salaryGuideHeading">
+        <h2 id="salaryGuideHeading">How to Calculate Pro-Rated Salary</h2>
+        <p>A pro-rated salary is a partial salary amount for an employee who works only part of a pay period. This calculator uses a calendar-day approach: monthly salary divided by the actual number of days in the target month, multiplied by the calendar days covered by the employment date range.</p>
+        <div class="formula">Pro-Rated Salary = (Monthly Salary ÷ Calendar Days in Month) × Active Calendar Days</div>
+        <div class="two-col">
+          <div class="info-card"><h3>When this method is useful</h3><p>Joining mid-month, leaving mid-month, estimating a first or final paycheck, or checking a calendar-day payroll calculation.</p></div>
+          <div class="info-card"><h3>When to verify another method</h3><p>Some employers calculate partial salary from working days, hourly rates, fixed divisors, payroll calendars, or local labor rules. Confirm the employer's payroll policy before treating an estimate as final.</p></div>
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="methodHeading">
+        <h2 id="methodHeading">How ProrateNow Handles Dates</h2>
+        <p>The calculator first finds the exact first and last day of the target month. It then intersects that month with your lease or employment date range. Dates outside the target month are ignored, which means a range can safely span multiple months without overcounting.</p>
+        <table class="comparison">
+          <thead><tr><th>Situation</th><th>What ProrateNow does</th></tr></thead>
+          <tbody>
+            <tr><td>February in a leap year</td><td>Uses 29 calendar days.</td></tr>
+            <tr><td>Date range starts before the month</td><td>Counts from the first day of the target month.</td></tr>
+            <tr><td>Date range ends after the month</td><td>Counts through the last day of the target month.</td></tr>
+            <tr><td>No overlap with the target month</td><td>Returns a pro-rated total of $0.00.</td></tr>
+            <tr><td>Range covers the entire target month</td><td>Returns the full monthly amount.</td></tr>
+          </tbody>
+        </table>
+        <p class="updated">Methodology reviewed October 7, 2026.</p>
+      </section>
+
+      <section class="content-section" id="faq" aria-labelledby="faqHeading">
+        <h2 id="faqHeading">Frequently Asked Questions</h2>
+        <details><summary>What does pro-rated rent mean?</summary><p>It means charging rent only for the part of a rental period that applies to the tenant, rather than charging the full monthly amount.</p></details>
+        <details><summary>How do I calculate rent for part of a month?</summary><p>Using the actual-days method, divide monthly rent by the number of calendar days in the month and multiply that daily rate by the number of rental days you are responsible for.</p></details>
+        <details><summary>Does ProrateNow count the move-in day?</summary><p>Yes. The calculator treats the start and end dates as inclusive when they overlap the selected target month.</p></details>
+        <details><summary>How does ProrateNow handle February and leap years?</summary><p>It derives the month length from the calendar. February therefore has 28 days in a normal year and 29 days in a leap year, such as February 2028.</p></details>
+        <details><summary>What if my lease starts in one month and ends in another?</summary><p>Select the month you want to calculate. ProrateNow counts only the days from your date range that overlap that target month.</p></details>
+        <details><summary>Should pro-rated salary use calendar days or working days?</summary><p>That depends on the employer's payroll policy and applicable rules. ProrateNow uses calendar days. If your organization uses working days, hourly rates, or another divisor, use that policy instead.</p></details>
+        <details><summary>Is this calculator legal or payroll advice?</summary><p>No. ProrateNow provides a mathematical estimate. Lease terms, payroll practices, taxes, employment rules, and local law can change the amount actually due.</p></details>
+        <details><summary>Does ProrateNow send my amounts or dates to a server?</summary><p>The calculator itself runs in your browser. Your inputs are saved in localStorage so they can survive a refresh. The calculator does not require a backend to perform the calculation.</p></details>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> ProrateNow. Free calculation tool.</span>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="/about.html">About &amp; methodology</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></nav>
+    </div>
+  </footer>
+
+  <div class="sr-only" aria-live="polite" id="copyAnnouncement"></div>
+
+  <script>
+  (() => {
+    "use strict";
+    const STORAGE_KEY = "proratenow-state-v2";
+    const THEME_KEY = "proratenow-theme-v1";
+    const state = { mode: "rent", rent: {amount:"",month:"",start:"",end:""}, salary: {amount:"",month:"",start:"",end:""} };
+    const $ = id => document.getElementById(id);
+    const el = {
+      rentTab:$("rentTab"), salaryTab:$("salaryTab"), rentPanel:$("rentPanel"), salaryPanel:$("salaryPanel"), themeToggle:$("themeToggle"), themeIcon:$("themeIcon"),
+      rentAmount:$("rentAmount"), rentMonth:$("rentMonth"), leaseStart:$("leaseStart"), leaseEnd:$("leaseEnd"), salaryAmount:$("salaryAmount"), salaryMonth:$("salaryMonth"), employmentStart:$("employmentStart"), employmentEnd:$("employmentEnd"),
+      resultTotal:$("resultTotal"), resultSummary:$("resultSummary"), dailyRate:$("dailyRate"), daysInMonth:$("daysInMonth"), activeDays:$("activeDays"), activeDaysLabel:$("activeDaysLabel"), statusBox:$("statusBox"), copyBreakdown:$("copyBreakdown"), copyAnnouncement:$("copyAnnouncement")
+    };
+    const fieldMap = {
+      rent:{amount:el.rentAmount,month:el.rentMonth,start:el.leaseStart,end:el.leaseEnd,errorIds:{amount:"rentAmountError",month:"rentMonthError",start:"leaseStartError",end:"leaseEndError"}},
+      salary:{amount:el.salaryAmount,month:el.salaryMonth,start:el.employmentStart,end:el.employmentEnd,errorIds:{amount:"salaryAmountError",month:"salaryMonthError",start:"employmentStartError",end:"employmentEndError"}}
+    };
+    const money = new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2,maximumFractionDigits:2});
+    const monthName = new Intl.DateTimeFormat("en-US",{month:"long",year:"numeric",timeZone:"UTC"});
+    function parseDate(v){ if(!v||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(v))return null; const [y,m,d]=v.split("-").map(Number); const x=new Date(Date.UTC(y,m-1,d)); return x.getUTCFullYear()===y&&x.getUTCMonth()===m-1&&x.getUTCDate()===d?x:null; }
+    function parseMonth(v){ if(!v||!/^[0-9]{4}-[0-9]{2}$/.test(v))return null; const [y,m]=v.split("-").map(Number); if(y<1||m<1||m>12)return null; const first=new Date(Date.UTC(y,m-1,1)), last=new Date(Date.UTC(y,m,0)); return {year:y,month:m,first,last,days:last.getUTCDate()}; }
+    function inclusiveDays(a,b){ return Math.floor((b-a)/86400000)+1; }
+    const later=(a,b)=>a>b?a:b, earlier=(a,b)=>a<b?a:b;
+    function labels(mode){ return mode==="rent"?{amount:"monthly rent",active:"rental",days:"Active Rent Days",noun:"rent"}:{amount:"monthly salary",active:"employment",days:"Active Calendar Days",noun:"salary"}; }
+    function clearErrors(mode){ const c=fieldMap[mode]; Object.keys(c.errorIds).forEach(k=>{c[k].removeAttribute("aria-invalid"); $(c.errorIds[k]).textContent="";}); }
+    function error(mode,key,msg){ const c=fieldMap[mode]; c[key].setAttribute("aria-invalid","true"); $(c.errorIds[key]).textContent=msg; }
+    function read(mode){ const c=fieldMap[mode]; state[mode]={amount:c.amount.value.trim(),month:c.month.value,start:c.start.value,end:c.end.value}; return state[mode]; }
+    function save(){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));}catch(_){} }
+    function restore(){ try{const s=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null"); if(!s)return; if(s.mode==="rent"||s.mode==="salary")state.mode=s.mode; ["rent","salary"].forEach(mode=>{ if(!s[mode])return; ["amount","month","start","end"].forEach(k=>{if(typeof s[mode][k]==="string")state[mode][k]=s[mode][k];}); });}catch(_){} }
+    function hydrate(){ el.rentAmount.value=state.rent.amount; el.rentMonth.value=state.rent.month; el.leaseStart.value=state.rent.start; el.leaseEnd.value=state.rent.end; el.salaryAmount.value=state.salary.amount; el.salaryMonth.value=state.salary.month; el.employmentStart.value=state.salary.start; el.employmentEnd.value=state.salary.end; }
+    function empty(msg="Enter your monthly amount, target month, and active date range.", tone="neutral"){ el.resultTotal.textContent="$0.00"; el.resultSummary.textContent=msg; el.dailyRate.textContent="$0.00"; el.daysInMonth.textContent="—"; el.activeDays.textContent="—"; el.statusBox.textContent="Your calculation updates instantly as you type."; el.statusBox.dataset.tone=tone; el.copyBreakdown.disabled=true; el.copyBreakdown.dataset.breakdown=""; }
+    function calculate(mode,{quiet=false}={}){
+      clearErrors(mode); const v=read(mode), l=labels(mode); const amount=Number(v.amount), month=parseMonth(v.month), start=parseDate(v.start), end=parseDate(v.end); const allBlank=!v.amount&&!v.month&&!v.start&&!v.end;
+      if(allBlank){ empty(); save(); return null; }
+      let ok=true;
+      if(v.amount===""||!Number.isFinite(amount)||amount<0){ if(!quiet)error(mode,"amount",`Enter a valid ${l.amount} of 0 or more.`); ok=false; }
+      if(!month){ if(!quiet)error(mode,"month","Choose a valid target month."); ok=false; }
+      if(!start){ if(!quiet)error(mode,"start",`Choose a valid ${l.active} start date.`); ok=false; }
+      if(!end){ if(!quiet)error(mode,"end",`Choose a valid ${l.active} end date.`); ok=false; }
+      if(start&&end&&start>end){ if(!quiet)error(mode,"end","End date cannot be earlier than the start date."); ok=false; }
+      if(!ok){ empty("Complete the highlighted fields to see your pro-rated total.","warning"); save(); return null; }
+      const overlapStart=later(start,month.first), overlapEnd=earlier(end,month.last); const active=overlapStart<=overlapEnd?inclusiveDays(overlapStart,overlapEnd):0; const daily=amount/month.days; const total=daily*active; const mLabel=monthName.format(month.first);
+      let status=`Using the actual calendar-day method for ${mLabel}.`; let tone="success";
+      if(active===0){status=`The selected ${l.active} dates do not overlap ${mLabel}, so the total is $0.00.`; tone="warning";} else if(active===month.days){status=`The active period covers all ${month.days} days of ${mLabel}, so the full ${l.amount} applies.`;}
+      el.resultTotal.textContent=money.format(total); el.resultSummary.textContent=`${money.format(amount)} monthly ÷ ${month.days} days × ${active} active day${active===1?"":"s"}.`; el.dailyRate.textContent=money.format(daily); el.daysInMonth.textContent=String(month.days); el.activeDays.textContent=String(active); el.activeDaysLabel.textContent=l.days; el.statusBox.textContent=status; el.statusBox.dataset.tone=tone; el.copyBreakdown.disabled=false;
+      el.copyBreakdown.dataset.breakdown=`Pro-Rated Total: ${money.format(total)}. Based on a monthly ${l.noun} of ${money.format(amount)} across ${month.days} days in ${mLabel}, active for ${active} day${active===1?"":"s"}. Daily rate: ${money.format(daily)}. Calculated via ProrateNow.`;
+      save(); return {total};
+    }
+    function switchMode(mode,focus=false){ if(!["rent","salary"].includes(mode))return; state.mode=mode; const r=mode==="rent"; el.rentTab.setAttribute("aria-selected",String(r)); el.salaryTab.setAttribute("aria-selected",String(!r)); el.rentTab.tabIndex=r?0:-1; el.salaryTab.tabIndex=r?-1:0; el.rentPanel.hidden=!r; el.salaryPanel.hidden=r; el.activeDaysLabel.textContent=r?"Active Rent Days":"Active Calendar Days"; history.replaceState(null,"",r?"#rent":"#salary"); if(focus)(r?el.rentTab:el.salaryTab).focus(); calculate(mode,{quiet:true}); save(); }
+    function bindTabs(){ const tabs=[el.rentTab,el.salaryTab]; tabs.forEach((tab,i)=>{tab.addEventListener("click",()=>switchMode(tab.dataset.mode)); tab.addEventListener("keydown",e=>{if(!["ArrowLeft","ArrowRight","Home","End"].includes(e.key))return; e.preventDefault(); let n=i; if(e.key==="ArrowLeft")n=(i-1+tabs.length)%tabs.length; if(e.key==="ArrowRight")n=(i+1)%tabs.length; if(e.key==="Home")n=0; if(e.key==="End")n=tabs.length-1; switchMode(tabs[n].dataset.mode,true);});}); }
+    function bindInputs(){ ["rent","salary"].forEach(mode=>{const c=fieldMap[mode]; ["amount","month","start","end"].forEach(k=>{c[k].addEventListener("input",()=>calculate(mode)); c[k].addEventListener("change",()=>calculate(mode));});}); }
+    function applyTheme(t){ const dark=t==="dark"; document.documentElement.dataset.theme=dark?"dark":"light"; el.themeToggle.setAttribute("aria-pressed",String(dark)); el.themeToggle.setAttribute("aria-label",dark?"Switch to light mode":"Switch to dark mode"); el.themeIcon.textContent=dark?"☀":"☾"; }
+    function initTheme(){ let t="light"; try{const s=localStorage.getItem(THEME_KEY); t=s==="light"||s==="dark"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");}catch(_){if(matchMedia("(prefers-color-scheme: dark)").matches)t="dark";} applyTheme(t); el.themeToggle.addEventListener("click",()=>{const n=document.documentElement.dataset.theme==="dark"?"light":"dark"; applyTheme(n); try{localStorage.setItem(THEME_KEY,n);}catch(_){}}); }
+    async function copy(){ const text=el.copyBreakdown.dataset.breakdown; if(!text)return; let ok=false; try{await navigator.clipboard.writeText(text);ok=true;}catch(_){const ta=document.createElement("textarea");ta.value=text;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{ok=document.execCommand("copy");}finally{ta.remove();}} const prev=el.copyBreakdown.textContent; el.copyBreakdown.textContent=ok?"Copied!":"Copy failed"; el.copyAnnouncement.textContent=ok?"Calculation breakdown copied.":"Unable to copy calculation breakdown."; setTimeout(()=>el.copyBreakdown.textContent=prev,1500); }
+    function init(){ restore(); hydrate(); initTheme(); bindTabs(); bindInputs(); el.copyBreakdown.addEventListener("click",copy); $("year").textContent=new Date().getFullYear(); const hash=location.hash.toLowerCase(); if(hash==="#salary")state.mode="salary"; if(hash==="#rent")state.mode="rent"; switchMode(state.mode); }
+    init();
+  })();
+  </script>
+</body>
+</html>
