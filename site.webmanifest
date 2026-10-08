@@ -1,0 +1,9 @@
+{
+  "name": "ProCalc: Pro-Rated Rent & Salary Calculator",
+  "short_name": "ProCalc",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f172a",
+  "description": "Free calendar-accurate pro-rated rent and salary calculator."
+}
